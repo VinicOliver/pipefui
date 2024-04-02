@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Field < ApplicationRecord
-  enum type: {
+  enum data_type: {
     short_text: 0,
     long_text: 1
   }
