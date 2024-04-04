@@ -22,7 +22,7 @@ class FormsController < ApplicationController
     if @form.save
       redirect_to root_url
     else
-      render :new, status: :unprocessable_entity
+      redirect_to new_form_url
     end
   end
 

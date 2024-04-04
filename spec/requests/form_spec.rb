@@ -88,7 +88,7 @@ RSpec.describe 'Forms', type: :request do
       it 'renders the new form page' do
         post forms_url(form: { title: form.title })
 
-        expect(response).to render_template(:new)
+        expect(response).to redirect_to(new_form_url)
       end
     end
   end
