@@ -1,0 +1,41 @@
+<%= form_with model: @form, url: forms_path do |form| %>
+  <h1>New Form</h1>
+
+  <div>
+    <%= form.label :title, 'Title'%>
+    <%= form.text_field :title %>
+  </div>
+
+  <div data-controller="form">
+    <button data-action="click->form#add" type="button">Add field</button>
+  </div>
+
+  <%= form.fields_for :fields do |fields_form| %>
+    <div id="fields">
+      <div class="field" data-index="<%= fields_form.options[:child_index]%>">
+        <div>
+          <%= fields_form.label :data_type %>
+          <%= fields_form.select(:data_type, %i[short_text long_text]) %>
+        </div>
+
+        <div>
+          <%= fields_form.label :label %>
+          <%= fields_form.text_field :label%>
+        </div>
+
+        <div>
+          <%= fields_form.label :not_required %>
+          <%= fields_form.radio_button :required, false %>
+          <%= fields_form.label :required %>
+          <%= fields_form.radio_button :required, true %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit 'Create form' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', :back %>

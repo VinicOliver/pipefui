@@ -1,0 +1,14 @@
+<h1>All Forms</h1>
+
+<% if @forms.count > 0 %>
+  <% @forms.each do |form| %>
+    <p>Título: <%= form.title %></p>
+
+    <%= button_to('Edit', edit_form_path(form), method: :get) %>
+    <%= button_to('Delete', form_path(form), method: :delete) %>
+  <% end %>
+<% else %>
+  <p>Nenhum formulário cadastrado</p>
+<% end %>
+
+<%= button_to('New Form', new_form_path, method: :get) %>
