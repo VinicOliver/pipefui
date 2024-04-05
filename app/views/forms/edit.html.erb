@@ -1,0 +1,53 @@
+<%= form_with model: @form, path: form_path, method: :patch do |form| %>
+  <h1>Edit Form</h1>
+
+  <div>
+    <%= form.label :title, 'Title' %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div data-controller="form">
+    <button data-action="click->form#add" type="button">Add field</button>
+  </div>
+
+  <br>
+
+  <div id="fields">
+    <%= form.fields_for :fields do |fields_form| %>
+      <div class="field" data-index="<%= fields_form.options[:child_index] %>">
+        <div>
+          <%= fields_form.label :data_type %>
+          <%= fields_form.select(:data_type, %i[short_text long_text]) %>
+        </div>
+
+        <div>
+          <%= fields_form.label :label %>
+          <%= fields_form.text_field :label %>
+        </div>
+
+        <div>
+          <%= fields_form.label :not_required %>
+          <%= fields_form.radio_button :required, false %>
+          <%= fields_form.label :required %>
+          <%= fields_form.radio_button :required, true %>
+        </div>
+
+        <div>
+          <%= fields_form.hidden_field :_destroy, default: false, id: "destroy_field_#{fields_form.options[:child_index]}" %>
+        </div>
+
+        <div data-controller="form">
+          <button data-action="click->form#remove" data-index="<%= fields_form.options[:child_index] %>" type="button">Remove field</button>
+        </div>
+      </div>
+
+      <br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit 'Update form' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', :back %>
