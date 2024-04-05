@@ -1,28 +1,19 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'New form', type: :feature do
-  it 'has the page title' do
-    visit new_form_path
+  describe 'when the page is loaded' do
+    it 'renders the content' do
+      visit new_form_path
 
-    expect(page).to have_content('New Form')
-  end
-
-  it 'has the title field' do
-    visit new_form_path
-
-    expect(find_field(id: 'form_title'))
-  end
-
-  it 'has the create form button' do
-    visit new_form_path
-
-    expect(page).to have_button('Create form')
-  end
-
-  it 'has the back button' do
-    visit new_form_path
-
-    expect(find_link('Back'))
+      aggregate_failures do
+        expect(page).to have_content('New Form')
+        expect(find_field(id: 'form_title'))
+        expect(page).to have_button('Create form')
+        expect(find_link('Back'))
+      end
+    end
   end
 
   describe 'with valid info' do

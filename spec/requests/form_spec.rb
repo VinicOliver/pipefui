@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Forms', type: :request do
-  describe 'GET /index' do
+RSpec.describe 'Forms', type: :request do # rubocop:disable Metrics/BlockLength
+  describe 'GET /forms' do
     it 'returns the index forms page' do
       get forms_url
 
@@ -11,7 +11,7 @@ RSpec.describe 'Forms', type: :request do
     end
   end
 
-  describe 'GET /new' do
+  describe 'GET /forms/new' do
     it 'returns the new form page' do
       get new_form_url
 
@@ -19,7 +19,7 @@ RSpec.describe 'Forms', type: :request do
     end
   end
 
-  describe 'GET /edit' do
+  describe 'GET /forms/:id/edit' do
     context 'when the form is found' do
       let(:form) { create(:form) }
 
@@ -39,7 +39,7 @@ RSpec.describe 'Forms', type: :request do
     end
   end
 
-  describe 'GET /show' do
+  describe 'GET /forms/:id' do
     context 'when the form is found' do
       let(:form) { create(:form) }
 
@@ -59,7 +59,7 @@ RSpec.describe 'Forms', type: :request do
     end
   end
 
-  describe 'POST /create' do
+  describe 'POST /forms' do
     context 'when the params are valid' do
       let(:form) { build(:form, title: 'my form') }
 
@@ -93,7 +93,7 @@ RSpec.describe 'Forms', type: :request do
     end
   end
 
-  describe 'PATCH /update' do
+  describe 'PATCH /forms/:id' do
     let(:form) { create(:form, title: 'my form') }
     let(:valid_params) do
       { title: 'new title' }
@@ -141,7 +141,7 @@ RSpec.describe 'Forms', type: :request do
     end
   end
 
-  describe 'DELETE /destroy' do
+  describe 'DELETE /forms/:id' do
     context 'when the form is found' do
       let(:form) { create(:form) }
 

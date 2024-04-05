@@ -14,8 +14,6 @@ class FormsController < ApplicationController
 
   def edit; end
 
-  def show; end
-
   def create
     @form = Form.new(form_params)
 

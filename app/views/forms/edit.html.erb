@@ -2,7 +2,7 @@
   <h1>Edit Form</h1>
 
   <div>
-    <%= form.label :title, 'Title'%>
+    <%= form.label :title, 'Title' %>
     <%= form.text_field :title %>
   </div>
 
@@ -14,7 +14,7 @@
 
   <div id="fields">
     <%= form.fields_for :fields do |fields_form| %>
-      <div class="field" data-index="<%= fields_form.options[:child_index]%>">
+      <div class="field" data-index="<%= fields_form.options[:child_index] %>">
         <div>
           <%= fields_form.label :data_type %>
           <%= fields_form.select(:data_type, %i[short_text long_text]) %>
@@ -22,7 +22,7 @@
 
         <div>
           <%= fields_form.label :label %>
-          <%= fields_form.text_field :label%>
+          <%= fields_form.text_field :label %>
         </div>
 
         <div>
@@ -37,7 +37,7 @@
         </div>
 
         <div data-controller="form">
-          <button data-action="click->form#remove" data-index="<%= fields_form.options[:child_index]%>" type="button">Remove field</button>
+          <button data-action="click->form#remove" data-index="<%= fields_form.options[:child_index] %>" type="button">Remove field</button>
         </div>
       </div>
 
