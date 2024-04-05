@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FormsController < ApplicationController
-  before_action :set_form, only: %i[edit show update destroy]
+  before_action :set_form, only: %i[edit update destroy]
 
   def index
     @forms = Form.all
